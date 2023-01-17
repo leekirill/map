@@ -1,0 +1,54 @@
+.main {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1200px;
+    height: 680px;
+    background-color: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+
+    .sidebar {
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin: 20px 20px 0 20px;
+
+            input {
+                box-sizing: border-box;
+                width: 320px;
+                height: 38px;
+                border: none;
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+        select {
+            width: 320px;
+            height: 48px;
+            border-radius: 4px;
+            padding: 0 14px;
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+            .item {
+                list-style: none;
+                border-top: 1px solid #E5E5E5;
+                padding: 20px;
+            }
+        }
+    }
+    .map {
+        background-color: rgb(230, 249, 255);
+        width: 100%;
+    }
+}
+
+body {
+    background-color: #E5E5E5;
+}
