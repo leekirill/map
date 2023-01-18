@@ -9,6 +9,7 @@
     background-color: #fff;
     border-radius: 14px;
     overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
 
     @media screen and (min-width: 1400px) {
         //do Smth
@@ -20,13 +21,13 @@
     }
     @media screen and (max-width: 900px) {
         width: 600px;
+        flex-direction: column;
     }
 
     .sidebar {
+        overflow: scroll;
         .form {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
+            display: inline-block;
             margin: 20px 20px 0 20px;
 
             input {
@@ -44,6 +45,12 @@
             height: 48px;
             border-radius: 4px;
             padding: 0 14px;
+            @media screen and (max-width: 900px) {
+                width: 100%;
+            }
+            &:hover {
+                cursor: pointer;
+            }
         }
         ul {
             padding: 0;
