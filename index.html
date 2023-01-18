@@ -6,17 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/src/css/styles.scss" />
     <title>Document</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 </head>
 
 <body>
     <section class="main">
         <aside class="sidebar">
             <form class="form">
-                <select>
-                    <option value="city_1">City #1</option>
-                    <option value="city_2">City #2</option>
-                    <option value="city_3">City #3</option>
-                </select>
+                <select></select>
                 <input placeholder="search"></input>
             </form>
             <ul>
@@ -25,12 +22,14 @@
                 <li class="item">Place #3</li>
             </ul>
         </aside>
-        <div class="map">
-            Map
-        </div>
+        <div id="map"></div>
     </section>
 
-    <script src="./index.js"></script>
+    <script src="./index.js" type="module"></script>
+    <script src="./src/api/map.js" type="module"></script>
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdwK1E2AOoEiReoOTkB3LexUSyN8LR17M&callback=initMap&v=weekly&libraries=places""
+            defer></script>
 </body>
 
 </html>
