@@ -1,32 +1,42 @@
 import countries from "/src/api/ua";
 import refs from "./refs";
-import state from "./placesModule";
+import module from "./placesModule";
 import initMap from "./api/map";
 import nearbyPlacesList from "./nearbyPlaces";
+import State from "./state";
 
-let nearbyArr = [];
+const stateManager = new State();
+let places = stateManager.state.places;
 
 // делаем селект из массива
 
 countries.map((country) => {
   const option = document.createElement("option");
+  const p = document.createElement("p");
 
   option.innerHTML = country.city;
   option.value = country.city;
+  p.textContent = ` ${country.admin_name}`;
+  option.append(p);
 
   refs.select.append(option);
 });
 
 // вешаем событие на селект
 
-refs.select.addEventListener("input", handleSelect);
+refs.select.addEventListener("change", handleSelect);
 
 function handleSelect() {
-  state.getPlaces(countries, refs.select.selectedIndex);
+  module.getPlaces(countries, refs.select.selectedIndex);
 
-  initMap(state.result, (data) => {
-    nearbyArr.push(data);
-    nearbyPlacesList(nearbyArr);
+  initMap(module.result, (data) => {
+    places.push(data);
+    nearbyPlacesList(places);
   });
-  nearbyArr = [];
+
+  // очищаем places перед обновлением города
+
+  places.splice(0, places.length);
+
+  refs.ul.querySelectorAll(".item").forEach((n) => n.remove());
 }

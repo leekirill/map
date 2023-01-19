@@ -1,11 +1,10 @@
-import state from "../placesModule";
+import module from "../placesModule";
 
 let map;
 let service;
 let infowindow;
-let nearbyPlaces = [];
 
-function initMap(obj = state.result, callback = () => {}) {
+function initMap(obj = module.result, callback = () => {}) {
   const sydney = new google.maps.LatLng(obj.lat, obj.lng);
 
   infowindow = new google.maps.InfoWindow();

@@ -2,15 +2,16 @@ import refs from "./refs";
 
 const nearbyPlacesList = (places) => {
   const li = document.createElement("li");
+  const p = document.createElement("p");
 
-  places.forEach((e) => {
-    li.textContent = e.name;
+  for (let i = 0; i < places.length; i += 1) {
+    li.textContent = places[i].name;
     li.classList.add("item");
+    li.append(p);
+    p.textContent = places[i].vicinity;
 
     refs.ul.prepend(li);
-  });
-
-  console.log(`place: ${places.length}, nodes: ${refs.ul.childElementCount}`);
+  }
 };
 
 export default nearbyPlacesList;

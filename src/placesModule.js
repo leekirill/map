@@ -1,4 +1,4 @@
-let state = {
+export default {
   result: {
     city: "Kyiv",
     lat: 50.4516590763791,
@@ -17,5 +17,3 @@ let state = {
     this.result = res;
   },
 };
-
-export default state;

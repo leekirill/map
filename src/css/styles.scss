@@ -1,5 +1,17 @@
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #0000004D;;
+    border-radius: 10px;
+    margin: 40px;
+}
+
 .main {
-    display: flex;
+    display: grid;
+    grid-template-columns: 360px 1fr;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -24,21 +36,27 @@
         flex-direction: column;
     }
 
+    
     .sidebar {
-        overflow: scroll;
+ 
+        overflow-y: scroll;
+        overflow-x: hidden;
+        margin: 5px 5px 0 0;
+
         .form {
             display: inline-block;
             padding: 20px;
             position: sticky;
             top: 0px;
             background-color: #fff;
-            box-shadow: 0 0px 10px #d8d8d8;
 
             input {
                 box-sizing: border-box;
                 width: 320px;
                 height: 38px;
+                margin-top: 24px;
                 border: none;
+                border-bottom: 1px solid #d7d7d7;
                 &:focus {
                     outline: none;
                 }
@@ -49,30 +67,38 @@
             height: 48px;
             border-radius: 4px;
             padding: 0 14px;
+            background-color: #d7d7d7;
             @media screen and (max-width: 900px) {
                 width: 100%;
             }
             &:hover {
                 cursor: pointer;
             }
+            option {
+                color: red;
+            }
         }
         ul {
             padding: 0;
             margin: 0;
+            width: 360px;
             .item {
                 list-style: none;
                 border-top: 1px solid #E5E5E5;
                 padding: 20px;
-            };
-            span {
-                display: block;
                 font-size: 18px;
                 font-weight: 700;
-                margin-bottom: 4px;
-            }
+                transition: 250ms;
+                &:hover {
+                    background-color: #FAFAFA;
+                    cursor: pointer;
+                }
+            };
             p {
+                font-size: 14px;
+                font-weight: 400;
+                margin: 8px 0 0 0;
                 padding: 0;
-                margin: 0;
             }
         }
     }
