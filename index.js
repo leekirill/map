@@ -1,4 +1,4 @@
-import select from "./src/select";
+import sidebar from "./src/sidebar";
 import nearbyPlaces from "./src/nearbyPlaces";
 import state from "./src/state";
 import handleInput from "./src/handleInput";
