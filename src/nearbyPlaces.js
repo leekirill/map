@@ -1,32 +1,36 @@
-import refs from "./refs";
-import module from "./placesModule";
-import State from "./state";
-import initMap from "./api/map";
+// import refs from "./refs";
+// import initMap from "./api/map";
 
-const state = new State();
+// // console.log(initMap());
+// // let map = new google.maps.Map(document.getElementById("map"), {
+// //   center: new google.maps.LatLng(obj.lat, obj.lng),
+// //   zoom: 15,
+// // });
 
-const nearbyPlacesList = (places) => {
-  const li = document.createElement("li");
-  const p = document.createElement("p");
+// // let map = new google.maps.Map(document.getElementById("map"), {
+// //   center: { lat: -33.8666, lng: 151.1958 },
+// //   zoom: 15,
+// // });
 
-  places.forEach((place) => {
-    li.textContent = place.name;
-    li.classList.add("item");
-    li.append(p);
-    li.onclick = function (e) {
-      initMap(module.result, (data) => {
-        places.push(data);
-        nearbyPlacesList(places);
-      });
-      console.log(
-        `lat: ${place.geometry.location.lat()} ,lng: ${place.geometry.location.lng()}`
-      );
-    };
+// const nearbyPlacesList = (places) => {
+//   const li = document.createElement("li");
+//   const p = document.createElement("p");
 
-    p.textContent = place.vicinity;
+//   places.forEach((place) => {
+//     li.textContent = place.name;
+//     li.classList.add("item");
+//     li.append(p);
 
-    refs.ul.prepend(li);
-  });
-};
+//     li.onclick = function () {
+//       console.log(123);
 
-export default nearbyPlacesList;
+//       map.setCenter(place.geometry.location);
+//     };
+
+//     p.textContent = place.vicinity;
+
+//     refs.ul.prepend(li);
+//   });
+// };
+
+// export default nearbyPlacesList;

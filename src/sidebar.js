@@ -42,8 +42,6 @@ function handleSelect() {
     nearbyPlacesList(places);
   });
 
-  console.log(places);
-
   // очищаем places перед обновлением города
 
   places.splice(0, places.length);
