@@ -4,7 +4,6 @@ import refs from "../refs";
 let map;
 let service;
 let infowindow;
-
 let placesArr = [];
 
 function initMap(obj = module.result) {
@@ -29,8 +28,6 @@ function initMap(obj = module.result) {
   service.nearbySearch(request, (results, status) => {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       for (var i = 0; i < results.length; i++) {
-        // createMarker(results[i]);
-
         // передаем данние в аргумент
 
         placesArr.push(results[i]);
@@ -41,30 +38,13 @@ function initMap(obj = module.result) {
   });
 }
 
-// function createMarker(place) {
-//   if (!place.geometry || !place.geometry.location) return;
+refs.input.addEventListener("input", (e) => {
+  let filteredArr = placesArr.filter((place) => {
+    return place.name.includes(e.target.value);
+  });
 
-//   const marker = new google.maps.Marker({
-//     map,
-//     position: place.geometry.location,
-//   });
-
-//   google.maps.event.addListener(marker, "click", () => {
-//     infowindow.setContent(place.name || "");
-//     infowindow.open(map);
-//   });
-// }
-
-// console.log(initMap());
-// let map = new google.maps.Map(document.getElementById("map"), {
-//   center: new google.maps.LatLng(obj.lat, obj.lng),
-//   zoom: 15,
-// });
-
-// let map = new google.maps.Map(document.getElementById("map"), {
-//   center: { lat: -33.8666, lng: 151.1958 },
-//   zoom: 15,
-// });
+  nearbyPlacesList(filteredArr);
+});
 
 const nearbyPlacesList = (places, map) => {
   const li = document.createElement("li");

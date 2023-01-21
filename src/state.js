@@ -10,7 +10,6 @@ export default class State {
   }
 
   update(path, current, prev) {
-    return;
-    // console.log(`${path} changed from ${prev.length} to ${current.length}`);
+    console.log(`${path} changed from ${prev.length} to ${current.length}`);
   }
 }

@@ -8,14 +8,6 @@ import State from "./state";
 const stateManager = new State();
 let places = stateManager.state.places;
 
-refs.input.addEventListener("input", (e) => {
-  places.filter((place) => {
-    if (place.name.includes(e.target.value)) {
-      console.log(e.target.value);
-    }
-  });
-});
-
 // делаем селект из массива
 
 countries.map((country) => {
