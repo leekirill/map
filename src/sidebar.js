@@ -2,15 +2,10 @@ import countries from "/src/api/ua";
 import refs from "./refs";
 import module from "./placesModule";
 import initMap from "./api/map";
-import nearbyPlacesList from "./nearbyPlaces";
-import State from "./state";
 
-const stateManager = new State();
-let places = stateManager.state.places;
-
-// [
-//   ...refs.radios.children,
-// ][0].title = `${countries[0].city} ${countries[0].admin_name}`;
+// const stateManager = new State();
+let places = [];
+let filteredArr = [];
 
 [
   ...refs.radios.children,
@@ -45,13 +40,12 @@ refs.citiesList.addEventListener("click", handleSelect);
 
 function handleSelect(e) {
   if (e.target.nodeName == "LI") {
-    console.log(e.target.firstElementChild.htmlFor);
-
     module.getPlaces(countries, Number(e.target.firstElementChild.htmlFor));
   }
 
   initMap(module.result, (data) => {
     places.push(data);
+
     nearbyPlacesList(places);
   });
 

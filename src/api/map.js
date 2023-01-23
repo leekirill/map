@@ -1,10 +1,19 @@
 import module from "../placesModule";
 import refs from "../refs";
+import State from "../state";
+
+const state = new State();
 
 let map;
 let service;
 let infowindow;
-let placesArr = [];
+let places = [];
+
+refs.search.addEventListener("input", (e) => {
+  state.state.value = e.target.value;
+});
+
+// Google API
 
 function initMap(obj = module.result) {
   const city = new google.maps.LatLng(obj.lat, obj.lng);
@@ -29,22 +38,21 @@ function initMap(obj = module.result) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       for (var i = 0; i < results.length; i++) {
         // передаем данние в аргумент
+        places.push(results[i]);
 
-        placesArr.push(results[i]);
-        nearbyPlacesList(placesArr, map);
+        nearbyPlacesList(
+          places.filter((e) => e.name.includes(state.state.value)),
+          map
+        );
       }
       map.setCenter(results[0].geometry.location);
     }
   });
 }
 
-refs.input.addEventListener("input", (e) => {
-  let filteredArr = placesArr.filter((place) => {
-    return place.name.includes(e.target.value);
-  });
+// Поиск мест
 
-  nearbyPlacesList(filteredArr);
-});
+// Добавляем масив ближайших мест
 
 const nearbyPlacesList = (places, map) => {
   const li = document.createElement("li");
@@ -74,6 +82,15 @@ const nearbyPlacesList = (places, map) => {
     refs.placesList.prepend(li);
   }
 };
+
+// refs.search.addEventListener("input", handleInput);
+
+// function handleInput() {
+//   console.log(123);
+//   // let filteredArr = placesArr.filter((place) => {
+//   //   return place.name.includes(e.target.value);
+//   // });
+// }
 
 window.initMap = initMap;
 

@@ -4,7 +4,7 @@ const refs = {
   citiesList: document.querySelector(".citiesList"),
   placesList: document.querySelector(".placesList"),
   items: document.querySelector(".items"),
-  input: document.querySelector("input"),
+  search: document.querySelector(".search"),
 };
 
 export default refs;
