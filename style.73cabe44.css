@@ -1,0 +1,23 @@
+.main {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1200px;
+  height: 680px;
+}
+.main .form {
+  display: flex;
+  flex-direction: column;
+}
+.main .form__select {
+  width: 320px;
+  height: 48px;
+}
+.main .map {
+  background-color: rgb(221, 221, 221);
+  width: 100%;
+}
+
+/*# sourceMappingURL=/style.73cabe44.css.map */

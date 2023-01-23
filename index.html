@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/map/styles.723fdf9d.css">
+    <title>Document</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+</head>
+
+<body>
+    <section class="main">
+        <aside class="sidebar">
+            <form class="form">
+                <details class="custom-select">
+                    <summary class="radios">
+                        <input type="radio" name="item" id="default" checked="">
+                    </summary>
+                    <ul class="citiesList"></ul>
+                </details>
+                <input placeholder="search">
+            </form>
+            <ul class="placesList"></ul>
+        </aside>
+        <div id="map"></div>
+    </section>
+
+    <script src="/map/map.cb6a4737.js" type="module"></script>
+    <script src="/map/map.81091f23.js" type="module"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdwK1E2AOoEiReoOTkB3LexUSyN8LR17M&libraries=places&callback=initMap&v=weekly" defer=""></script>
+</body>
+
+</html>
