@@ -8,35 +8,53 @@ import State from "./state";
 const stateManager = new State();
 let places = stateManager.state.places;
 
+[
+  ...refs.radios.children,
+][0].title = `${countries[0].city} ${countries[0].admin_name}`;
+
 // делаем селект из массива
 
-countries.map((country) => {
-  const option = document.createElement("option");
-  const p = document.createElement("p");
+countries.map((country, i) => {
+  const input = document.createElement("input");
 
-  option.innerHTML = country.city;
-  option.value = country.city;
-  p.textContent = ` ${country.admin_name}`;
-  option.append(p);
+  input.type = "radio";
+  input.name = "city__item";
+  input.id = i;
+  input.title = country.city;
 
-  refs.select.append(option);
+  refs.radios.append(input);
+
+  refs.citiesList.insertAdjacentHTML(
+    "beforeend",
+    `<li class="item">
+    <label for="${i}">
+        ${country.city}
+        <p>${country.admin_name}</p>
+    </label>
+    </li>`
+  );
 });
 
 // вешаем событие на селект
 
-refs.select.addEventListener("change", handleSelect);
+refs.citiesList.addEventListener("click", handleSelect);
 
-function handleSelect() {
-  module.getPlaces(countries, refs.select.selectedIndex);
+function handleSelect(e) {
+  if (e.target.nodeName == "LI") {
+    module.getPlaces(countries, Number(e.target.firstElementChild.htmlFor));
+  }
 
   initMap(module.result, (data) => {
     places.push(data);
     nearbyPlacesList(places);
   });
 
-  // очищаем places перед обновлением города
+  [...refs.radios.children][0].title = e.target.innerText;
+  refs.customSelect.removeAttribute("open");
+
+  // // очищаем places перед обновлением города
 
   places.splice(0, places.length);
 
-  refs.ul.querySelectorAll(".item").forEach((n) => n.remove());
+  refs.placesList.querySelectorAll(".item").forEach((n) => n.remove());
 }

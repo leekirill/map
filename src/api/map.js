@@ -67,7 +67,7 @@ const nearbyPlacesList = (places, map) => {
 
     p.textContent = place.vicinity;
 
-    refs.ul.prepend(li);
+    refs.placesList.prepend(li);
   }
 };
 

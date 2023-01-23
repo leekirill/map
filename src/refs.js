@@ -1,6 +1,9 @@
 const refs = {
-  select: document.querySelector("select"),
-  ul: document.querySelector("ul"),
+  customSelect: document.querySelector(".custom-select"),
+  radios: document.querySelector(".radios"),
+  citiesList: document.querySelector(".citiesList"),
+  placesList: document.querySelector(".placesList"),
+  items: document.querySelector(".items"),
   input: document.querySelector("input"),
 };
 

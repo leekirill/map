@@ -13,21 +13,15 @@
     <section class="main">
         <aside class="sidebar">
             <form class="form">
-                <label for="select" class="select">
-                    <input type="radio" name="list" value="not_changed" id="bg" checked />
-                    <input type="radio" name="list" value="not_changed" id="select">
-                    <label class="bg" for="bg"></label>
-                    <div class="items">
-                        <input type="radio" name="list" value="first_value" id="list[0]">
-                        <label for="list[0]">First option</label>
-                        <input type="radio" name="list" value="second_value" id="list[1]">
-                        <label for="list[1]">Second loooooong option</label>
-                        <span id="text">Select something...</span>
-                    </div>
-                </label>
+                <details class="custom-select">
+                    <summary class="radios">
+                        <input type="radio" name="item" id="default" title="Auswählen..." checked>
+                    </summary>
+                    <ul class="citiesList"></ul>
+                </details>
                 <input placeholder="search"></input>
             </form>
-            <ul></ul>
+            <ul class="placesList"></ul>
         </aside>
         <div id="map"></div>
     </section>
