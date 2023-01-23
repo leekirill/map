@@ -1,8 +1,5 @@
 import module from "../placesModule";
 import refs from "../refs";
-import State from "../state";
-
-const state = new State();
 
 let map;
 let service;
@@ -10,7 +7,7 @@ let infowindow;
 let places = [];
 
 refs.search.addEventListener("input", (e) => {
-  state.state.value = e.target.value;
+  e.target.value;
 });
 
 // Google API
@@ -36,15 +33,28 @@ function initMap(obj = module.result) {
 
   service.nearbySearch(request, (results, status) => {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
-      for (var i = 0; i < results.length; i++) {
-        // передаем данние в аргумент
-        places.push(results[i]);
+      results.forEach((res) => {
+        places.push(res);
 
-        nearbyPlacesList(
-          places.filter((e) => e.name.includes(state.state.value)),
-          map
-        );
-      }
+        let filteredArr = [];
+
+        refs.search.oninput = function (e) {
+          filteredArr = places.filter((el) => el.name.includes(e.target.value));
+
+          nearbyPlacesList(filteredArr, map);
+        };
+
+        nearbyPlacesList(places, map);
+      });
+      // for (var i = 0; i < results.length; i++) {
+      //   // передаем данние в аргумент
+      //   places.push(results[i]);
+
+      //   nearbyPlacesList(
+      //     places.filter((e) => e.name.includes(state.state.value)),
+      //     map
+      //   );
+      // }
       map.setCenter(results[0].geometry.location);
     }
   });
