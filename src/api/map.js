@@ -49,6 +49,7 @@ refs.input.addEventListener("input", (e) => {
 const nearbyPlacesList = (places, map) => {
   const li = document.createElement("li");
   const p = document.createElement("p");
+  // const img = document.createElement("img");
 
   for (const place of places) {
     new google.maps.Marker({
@@ -59,7 +60,10 @@ const nearbyPlacesList = (places, map) => {
 
     li.textContent = place.name;
     li.classList.add("item");
+    // img.src = place.icon;
+
     li.append(p);
+    // li.append(img);
 
     li.addEventListener("click", () => {
       map.setCenter(place.geometry.location);

@@ -8,6 +8,10 @@ import State from "./state";
 const stateManager = new State();
 let places = stateManager.state.places;
 
+// [
+//   ...refs.radios.children,
+// ][0].title = `${countries[0].city} ${countries[0].admin_name}`;
+
 [
   ...refs.radios.children,
 ][0].title = `${countries[0].city} ${countries[0].admin_name}`;
@@ -41,6 +45,8 @@ refs.citiesList.addEventListener("click", handleSelect);
 
 function handleSelect(e) {
   if (e.target.nodeName == "LI") {
+    console.log(e.target.firstElementChild.htmlFor);
+
     module.getPlaces(countries, Number(e.target.firstElementChild.htmlFor));
   }
 
