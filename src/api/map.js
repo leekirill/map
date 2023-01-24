@@ -36,40 +36,40 @@ function initMap(obj = module.result) {
       results.forEach((res) => {
         places.push(res);
 
-        let filteredArr = [];
+        let filteredArr;
 
-        refs.search.oninput = function (e) {
-          filteredArr = places.filter((el) => el.name.includes(e.target.value));
+        // Поиск мест
+
+        refs.search.addEventListener("input", handleInput);
+
+        function handleInput(e) {
+          filteredArr = places.filter((el) =>
+            el.name.toLowerCase().includes(e.target.value.toLowerCase())
+          );
 
           nearbyPlacesList(filteredArr, map);
-        };
+        }
 
         nearbyPlacesList(places, map);
       });
-      // for (var i = 0; i < results.length; i++) {
-      //   // передаем данние в аргумент
-      //   places.push(results[i]);
 
-      //   nearbyPlacesList(
-      //     places.filter((e) => e.name.includes(state.state.value)),
-      //     map
-      //   );
-      // }
+      //
+
       map.setCenter(results[0].geometry.location);
     }
   });
 }
 
-// Поиск мест
-
 // Добавляем масив ближайших мест
 
 const nearbyPlacesList = (places, map) => {
-  const li = document.createElement("li");
-  const p = document.createElement("p");
-  // const img = document.createElement("img");
+  refs.placesList.innerHTML = "";
 
   for (const place of places) {
+    const li = document.createElement("li");
+    const p = document.createElement("p");
+    // const img = document.createElement("img");
+
     new google.maps.Marker({
       map,
       title: place.name,
@@ -92,15 +92,6 @@ const nearbyPlacesList = (places, map) => {
     refs.placesList.prepend(li);
   }
 };
-
-// refs.search.addEventListener("input", handleInput);
-
-// function handleInput() {
-//   console.log(123);
-//   // let filteredArr = placesArr.filter((place) => {
-//   //   return place.name.includes(e.target.value);
-//   // });
-// }
 
 window.initMap = initMap;
 
