@@ -27,6 +27,12 @@ html * {
     border-radius: 14px;
     overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
+    box-shadow:
+        0px 3.4px 2.4px -28px rgba(0, 0, 0, 0.043),
+        0px 8.6px 6px -28px rgba(0, 0, 0, 0.062),
+        0px 17.5px 12.2px -28px rgba(0, 0, 0, 0.078),
+        0px 36.1px 25.2px -28px rgba(0, 0, 0, 0.097),
+        0px 99px 69px -28px rgba(0, 0, 0, 0.14);
 
     @media screen and (min-width: 1400px) {
         //do Smth
